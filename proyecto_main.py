@@ -135,11 +135,14 @@ def usuario(df_final):
             busqueda = Pro.sort_values(by="Distancia",ascending=True).head(1)
             busqueda.to_csv("data/BiciMad_Mas_Cercana.csv", sep= ";")
             print("El archivo de la BiciMad más cercana a su lugar de intéres se encuentra guardado en la carpeta data, en formato CSV")
+            print("Si desea algo más, vuelva a ejecutar de nuevo el programa. Muchas gracias por usar nuestro programa")
+
             break
         elif a == "2":
             pro_main = df_final.sort_values(by = "Distancia", ascending = True).groupby('Place of interest')["Type of place",'Place address', 'name','address'].nth(0)
             pro_main.to_csv("data/BiciMads_Mas_Cercana.csv", sep= ";")
             print("El archivo de la BiciMad más cercana a cada uno de sus lugares de intéres se encuentra guardado en la carpeta data, en formato CSV")
+            print("Si desea algo más, vuelva a ejecutar de nuevo el programa. Muchas gracias por usar nuestro programa")
             break
 
         else:
@@ -149,5 +152,5 @@ def usuario(df_final):
 
 
 args = parser.parse_args(sys.argv[1:])
-if args.tipo == "MasCercana":
+if args.tipo == "BiciMad":
     ubicacion_mas_cercana = usuario(df_final)
